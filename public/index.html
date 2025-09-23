@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=0"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+
+        <link rel="manifest" href="/manifest.json">
+        <title>Ethan Loves Corn</title>
+
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+                background-color: #000;
+            }
+
+            #feed-container {
+                margin: 0px;
+            }
+
+            #media-slides {
+                height: 100dvh;
+            }
+
+            .media {
+                height: 100dvh;
+                /* max-width: 100dvw; */
+                flex-shrink: 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                overscroll-behavior-x: none;
+                display: grid;
+                place-items: center;
+            }
+
+            .media > * {
+                height: auto;
+                width: 100dvw;
+                object-fit: cover;
+                max-width: none;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="feed-container">
+            <div id="media-slides" class="swiper">
+                <div class="swiper-wrapper">
+
+                    <!-- <div class="media swiper-slide"> -->
+                    <!--     <video loop> -->
+                    <!--         <source src="videos/1.mp4" type="video/mp4"> -->
+                    <!--         Your browser does not support the video tag. -->
+                    <!--     </video> -->
+                    <!-- </div> -->
+                    <!-- <div class="media swiper-slide"> -->
+                    <!--     <video loop> -->
+                    <!--         <source src="videos/2.mp4" type="video/mp4"> -->
+                    <!--         Your browser does not support the video tag. -->
+                    <!--     </video> -->
+                    <!-- </div> -->
+                    <!-- <div class="media swiper-slide"> -->
+                    <!--     <video loop> -->
+                    <!--         <source src="videos/3.mp4" type="video/mp4"> -->
+                    <!--         Your browser does not support the video tag. -->
+                    <!--     </video> -->
+                    <!-- </div> -->
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</html>
