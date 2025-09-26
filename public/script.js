@@ -16,15 +16,16 @@ const swiper = new Swiper('.swiper', {
     }
 });
 
+let array
+
 window.onload = async () => {
     const count = await fetch('/videoCount').then(async response => await response.text())
 
-    const array = shuffledRange(count)
+    array = shuffledRange(count)
 
-    console.log(array)
-    console.log(array.length)
+    for (let i = 0; i < 2; i++) {
+        const n = array.shift()
 
-    array.forEach(n => {
         swiper.appendSlide(`
             <div class="media swiper-slide">
                 <video loop>
@@ -33,7 +34,7 @@ window.onload = async () => {
                 </video>
             </div>
         `)
-    })
+    }
 
     document.body.addEventListener('click', () => {
         const activeVideo = swiper.slides[swiper.activeIndex].querySelector('video')
@@ -45,6 +46,34 @@ window.onload = async () => {
         }
     })
 }
+
+let previousIndex = swiper.activeIndex
+let swipeUpCount = 0
+
+swiper.on('slideChange', async () => {
+    let currentIndex = swiper.activeIndex
+
+    console.log(currentIndex)
+
+    if (currentIndex > previousIndex && swipeUpCount == 0) {
+        const n = array.shift()
+
+        if (n) swiper.appendSlide(`
+            <div class="media swiper-slide">
+                <video loop>
+                    <source src="videos/${n}.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        `)
+    } else if (currentIndex > previousIndex && swipeUpCount > 0) {
+        swipeUpCount--
+    } else if (currentIndex < previousIndex) {
+        swipeUpCount++
+    }
+
+    previousIndex = currentIndex;
+});
 
 function shuffledRange(n) {
     const arr = Array.from({ length: n }, (_, i) => i)
