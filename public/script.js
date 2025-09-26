@@ -73,6 +73,8 @@ swiper.on('slideChange', async () => {
     }
 
     previousIndex = currentIndex;
+
+    Array.from(document.querySelectorAll('video')).forEach(video => video.fastSeek(0))
 });
 
 function shuffledRange(n) {
